@@ -37,6 +37,8 @@
 
 ;;; Code:
 
+(require 'seq)
+
 (defgroup ctrlxo nil
   "Select most recently used window."
   :group 'windows)
