@@ -37,6 +37,14 @@
 
 ;;; Code:
 
+(defgroup ctrlxo nil
+  "Select most recently used window."
+  :group 'windows)
+
+(defcustom ctrlxo-inhibit-usage-message nil
+  "Inhibit usage message on transient keymap activation."
+  :type 'boolean)
+
 (defvar ctrlxo--window-list nil)
 (defvar ctrlxo--selected-window nil)
 
@@ -96,9 +104,10 @@ Activate transient keymap to switch to the next recently used window."
   (setq ctrlxo--selected-window (selected-window))
   (ctrlxo--make-window-list)
   (ctrlxo-forward)
-  (message
-   (substitute-command-keys
-    "Next window: \\<ctrlxo-map>\\[ctrlxo-forward], previous window: \\<ctrlxo-map>\\[ctrlxo-backward], cancel switch: \\<ctrlxo-map>\\[ctrlxo-cancel]."))
+  (unless ctrlxo-inhibit-usage-message
+    (message
+     (substitute-command-keys
+      "Next window: \\<ctrlxo-map>\\[ctrlxo-forward], previous window: \\<ctrlxo-map>\\[ctrlxo-backward], cancel switch: \\<ctrlxo-map>\\[ctrlxo-cancel].")))
   (set-transient-map ctrlxo-map t #'ctrlxo--map-exit))
 
 
