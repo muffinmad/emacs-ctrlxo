@@ -1,4 +1,5 @@
 [![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg)](http://www.gnu.org/copyleft/gpl.html)
+[![MELPA](http://melpa.org/packages/ctrlxo-badge.svg)](http://melpa.org/#/ctrlxo)
 
 # emacs-ctrlxo
 
@@ -21,6 +22,8 @@ Maybe give it a try as `other-window` replacement:
 
 ## Installation
 
-Download `ctrlxo.el` and run:
+`ctrlxo` is available on [MELPA](https://melpa.org/#/ctrlxo).
+
+Alternatively, you can download `ctrlxo.el` and run:
 
 <kbd>M-x</kbd> `package-install-file` <kbd>RET</kbd> `<path-to-ctrlxo-el>` <kbd>RET</kbd>
