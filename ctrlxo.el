@@ -5,7 +5,7 @@
 ;; Author: Andrii Kolomoiets <andreyk.mad@gmail.com>
 ;; Keywords: frames
 ;; URL: https://github.com/muffinmad/emacs-ctrlxo
-;; Package-Version: 1.0
+;; Package-Version: 1.1
 ;; Package-Requires: ((emacs "25.1"))
 
 ;; This file is NOT part of GNU Emacs.
@@ -47,12 +47,18 @@
   "Inhibit usage message on transient keymap activation."
   :type 'boolean)
 
+(defcustom ctrlxo-frames 'visible
+  "What frames to consider."
+  :type '(choice (const :tag "Current frame" nil)
+                 (const :tag "All visible frames" visible)
+                 (const :tag "All visible and iconified frames" 0)))
+
 (defvar ctrlxo--window-list nil)
 (defvar ctrlxo--selected-window nil)
 
 (defun ctrlxo--make-window-list ()
   "Build window list sorted by recent usage."
-  (setq ctrlxo--window-list (sort (window-list-1 nil nil 'visible)
+  (setq ctrlxo--window-list (sort (window-list-1 nil nil ctrlxo-frames)
                                  (lambda (w1 w2)
                                    (> (window-use-time w1)
                                       (window-use-time w2))))))
