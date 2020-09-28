@@ -14,11 +14,26 @@ Use the `ctrlxo` function to start switching between windows on visible frames i
 - <kbd>O</kbd> to switch to the previous window
 - <kbd>C-g</kbd> to cancel switching and select window that was active on `ctrlxo` invocation
 
-Maybe give it a try as `other-window` replacement:
+### Use <kbd>C-x o</kbd> to switch windows
+
+Give it a try as `other-window` replacement:
 
 ```elisp
 (global-set-key (kbd "C-x o") #'ctrlxo)
 ```
+
+### Use <kbd>C-TAB</kbd> to switch windows
+
+```elisp
+(define-key ctrlxo-map (kbd "o") nil)
+(define-key ctrlxo-map (kbd "O") nil)
+(define-key ctrlxo-map (kbd "<tab>") #'ctrlxo-forward)
+(define-key ctrlxo-map (kbd "<S-tab>") #'ctrlxo-backward)
+
+(global-set-key (kbd "C-<tab>") #'ctrlxo)
+```
+
+Now use <kbd>C-TAB</kbd> to start switching, <kbd>TAB</kbd> to select next window and <kbd>S-TAB</kbd> to select previous window.
 
 ## Installation
 
