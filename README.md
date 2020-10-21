@@ -14,26 +14,23 @@ Use the `ctrlxo` function to start switching between windows on visible frames i
 - <kbd>O</kbd> to switch to the previous window
 - <kbd>C-g</kbd> to cancel switching and select window that was active on `ctrlxo` invocation
 
-### Use <kbd>C-x o</kbd> to switch windows
+Use the `ctrlxo-currrent-frame` function to start switching between windows on the current frame.
 
-Give it a try as `other-window` replacement:
+### Use <kbd>C-TAB</kbd> and <kbd>C-x o</kbd> to switch windows
 
-```elisp
-(global-set-key (kbd "C-x o") #'ctrlxo)
-```
-
-### Use <kbd>C-TAB</kbd> to switch windows
+Following example configuration will allow to switch between windows on all visible frames with <kbd>C-TAB</kbd> and between windows on the current frame with <kbd>C-x o</kbd>:
 
 ```elisp
-(define-key ctrlxo-map (kbd "o") nil)
-(define-key ctrlxo-map (kbd "O") nil)
-(define-key ctrlxo-map (kbd "<tab>") #'ctrlxo-forward)
-(define-key ctrlxo-map (kbd "<S-tab>") #'ctrlxo-backward)
+(require 'ctrlxo)
 
 (global-set-key (kbd "C-<tab>") #'ctrlxo)
+(global-set-key (kbd "C-x o") #'ctrlxo-current-frame)
+
+(define-key ctrlxo-map (kbd "<tab>") #'ctrlxo-forward)
+(define-key ctrlxo-map (kbd "<S-tab>") #'ctrlxo-backward)
 ```
 
-Now use <kbd>C-TAB</kbd> to start switching, <kbd>TAB</kbd> to select next window and <kbd>S-TAB</kbd> to select previous window.
+Now use <kbd>C-TAB</kbd> or <kbd>C-x o</kbd> to start switching, <kbd>TAB</kbd> or <kbd>o</kbd> to select next window and <kbd>S-TAB</kbd> or <kbd>O</kbd> to select previous window.
 
 ## Installation
 
